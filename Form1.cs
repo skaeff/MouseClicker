@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -63,6 +64,22 @@ namespace MouseClicker
 
             g.Dispose();
             MyInterop.ReleaseDC(IntPtr.Zero, desktopPtr);
+        }
+
+        private volatile int _i = 0;
+        private async void btnTest_Click(object sender, EventArgs e)
+        {
+            await DoSomeJob();
+            MessageBox.Show($"the _i is {_i}");
+        }
+
+        async Task DoSomeJob()
+        {
+            await new TaskFactory().StartNew(() =>
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(10));
+                _i++;
+            });
         }
     }
 }

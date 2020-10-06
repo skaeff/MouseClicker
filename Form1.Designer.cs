@@ -37,6 +37,7 @@
             this.btnClickLocation = new System.Windows.Forms.Button();
             this.rbLeft = new System.Windows.Forms.RadioButton();
             this.rbRight = new System.Windows.Forms.RadioButton();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.xCoord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yCoord)).BeginInit();
             this.SuspendLayout();
@@ -132,11 +133,22 @@
             this.rbRight.Text = "right click";
             this.rbRight.UseVisualStyleBackColor = true;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(354, 4);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 6;
+            this.btnTest.Text = "test thread";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 148);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.rbRight);
             this.Controls.Add(this.rbLeft);
             this.Controls.Add(this.btnClickLocation);
@@ -164,6 +176,7 @@
         private System.Windows.Forms.Button btnClickLocation;
         private System.Windows.Forms.RadioButton rbLeft;
         private System.Windows.Forms.RadioButton rbRight;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

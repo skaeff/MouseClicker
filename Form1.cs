@@ -18,7 +18,7 @@ namespace MouseClicker
         public Form1()
         {
             InitializeComponent();
-            Text = HeaderText;
+            lblStatus.Text = HeaderText;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -38,19 +38,19 @@ namespace MouseClicker
 
             MouseOperations.SetCursorPosition(oldPos);
 
-            Text = HeaderText;
+            lblStatus.Text = HeaderText;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
-            Text = HeaderText;
+            lblStatus.Text = HeaderText;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            Text = HeaderText;
+            lblStatus.Text = HeaderText;
         }
 
 
@@ -80,6 +80,15 @@ namespace MouseClicker
                 Thread.Sleep(TimeSpan.FromSeconds(10));
                 _i++;
             });
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MyInterop.ReleaseCapture();
+                MyInterop.SendMessage(Handle, MyInterop.WM_NCLBUTTONDOWN, MyInterop.HT_CAPTION, 0);
+            }
         }
     }
 }
